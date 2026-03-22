@@ -1,0 +1,307 @@
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Trinetra AI - Dark Futuristic Theme */
+    --background: 0.08 0.01 265;
+    --foreground: 0.95 0.01 210;
+
+    --card: 0.1 0.015 260;
+    --card-foreground: 0.93 0.01 210;
+
+    --popover: 0.1 0.015 260;
+    --popover-foreground: 0.93 0.01 210;
+
+    /* Electric Blue primary */
+    --primary: 0.75 0.18 210;
+    --primary-foreground: 0.08 0.01 265;
+
+    /* Violet secondary */
+    --secondary: 0.45 0.2 290;
+    --secondary-foreground: 0.95 0.01 210;
+
+    --muted: 0.14 0.02 260;
+    --muted-foreground: 0.6 0.04 240;
+
+    --accent: 0.65 0.22 295;
+    --accent-foreground: 0.95 0.01 210;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.95 0.01 210;
+
+    --border: 0.2 0.04 260;
+    --input: 0.15 0.02 260;
+    --ring: 0.75 0.18 210;
+
+    --chart-1: 0.75 0.18 210;
+    --chart-2: 0.65 0.22 295;
+    --chart-3: 0.7 0.15 170;
+    --chart-4: 0.8 0.12 55;
+    --chart-5: 0.6 0.2 330;
+
+    --sidebar: 0.09 0.01 265;
+    --sidebar-foreground: 0.93 0.01 210;
+    --sidebar-primary: 0.75 0.18 210;
+    --sidebar-primary-foreground: 0.08 0.01 265;
+    --sidebar-accent: 0.14 0.02 260;
+    --sidebar-accent-foreground: 0.93 0.01 210;
+    --sidebar-border: 0.2 0.04 260;
+    --sidebar-ring: 0.75 0.18 210;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    background-color: oklch(0.08 0.01 265);
+    overflow-x: hidden;
+  }
+}
+
+/* Glow utilities */
+.glow-blue {
+  box-shadow: 0 0 20px oklch(0.75 0.18 210 / 0.4), 0 0 60px
+    oklch(0.75 0.18 210 / 0.15);
+}
+.glow-violet {
+  box-shadow: 0 0 20px oklch(0.65 0.22 295 / 0.4), 0 0 60px
+    oklch(0.65 0.22 295 / 0.15);
+}
+.glow-text-blue {
+  text-shadow: 0 0 20px oklch(0.75 0.18 210 / 0.8), 0 0 40px
+    oklch(0.75 0.18 210 / 0.4);
+}
+
+/* Glass card */
+.glass-card {
+  background: oklch(0.12 0.02 260 / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.75 0.18 210 / 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    oklch(0.85 0.18 210),
+    oklch(0.72 0.22 295)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Feature card hover */
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid oklch(0.25 0.04 260);
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: oklch(0.75 0.18 210 / 0.5);
+  box-shadow: 0 8px 40px oklch(0.75 0.18 210 / 0.2), 0 0 0 1px
+    oklch(0.75 0.18 210 / 0.1);
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-core {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(6px) rotate(-1deg);
+  }
+}
+
+@keyframes wave-bar {
+  0%,
+  100% {
+    height: 8px;
+  }
+  50% {
+    height: 32px;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(60px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(60px) rotate(-360deg);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px) scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15px) translateX(-10px) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-40px) translateX(20px) scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+.animate-pulse-core {
+  animation: pulse-core 2s ease-in-out infinite;
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-orbit {
+  animation: orbit 8s linear infinite;
+}
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+.animate-blink {
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.08 0.01 265);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0.06 260);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.75 0.18 210 / 0.6);
+}
